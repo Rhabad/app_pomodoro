@@ -62,6 +62,7 @@ function renderTasks() {
         `;
     });
 
+    // traemos el contenedor de los tasks y luego le ingresamos el task ingresado
     const tasksContainer = document.querySelector('#tasks');
     tasksContainer.innerHTML = html.join('');
 
@@ -84,6 +85,8 @@ function startButtonHandler(id) {
     current = id;
     const taskIndex = tasks.findIndex(task => task.id === id);
     taskName.textContent = tasks[taskIndex].title;
+
+    renderTime();
 
     timer = setInterval(() => {
         timerHandler(id);
@@ -115,6 +118,7 @@ function markCompleted(id) {
 function startBreak() {
     time = 2;
     taskName.textContent = 'Break';
+    renderTime();
     timerBreak = setInterval(() => {
         timerBreakHandler();
     }, 1000);
